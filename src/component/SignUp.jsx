@@ -3,8 +3,10 @@ import Logo from "./Images/Logo.svg";
 import pablo from "./Images/pablo-sign-in 1.svg";
 const SignUp = () => {
   localStorage.clear();
-  let email = document.querySelector("#email");
-  let password = document.querySelector("#password");
+  const email = document.querySelector("#email");
+  const password = document.querySelector("#password");
+  const [mainPassword, setMainPassword] = useState('')
+  const [showPassword, setShowPassword] = useState(false)
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -12,17 +14,15 @@ const SignUp = () => {
   };
 
   const handleShow = () => {
-    alert("show password");
+    setShowPassword(!showPassword)
   };
 
   const handleClick = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     setTimeout(() => {
-      setValues(!values)
-    },1000)
-  }
-
-  
+      setValues(!values);
+    }, 1000);
+  };
 
   return (
     <div>
@@ -51,15 +51,18 @@ const SignUp = () => {
                 onChange={handleChange}
               />
               <input
-                type="password"
+                type={showPassword ? 'text' : 'password'}
                 name="password"
                 id="password"
                 placeholder="Password"
                 required
-                onChange={handleChange}
+                onChange={(e) => {
+                  
+                  localStorage.setItem(e.target.id, e.target.value);
+                }}
               />
               <p className="show" onClick={handleShow}>
-                SHOW
+              {showPassword ?  'Hide password' : 'Show'}
               </p>
               <p className="forgot">FORGOT PASSWORD?</p>
               <input onClick={handleClick} type="submit" value="LOG IN" />
