@@ -3,7 +3,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import Logo from "./Images/Logo.svg";
 import pablo from "./Images/pablo-sign-in 1.svg";
 import { useNavigate } from "react-router-dom";
-import { auth } from "./firebase";
+import { auth } from "../firebase";
 
 const SignUp = () => {
   const [email, setEmail] = useState(""); // Initialize email state
