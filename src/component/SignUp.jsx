@@ -18,25 +18,20 @@ const SignUp = () => {
   const handleClick = (e) => {
     e.preventDefault();
 
-    // Hardcoded allowed email and password
     const allowedEmail = "test24@test.com";
     const allowedPassword = "testpassword1234";
 
-    // Check if entered credentials match the allowed ones
     if (email === allowedEmail && password === allowedPassword) {
       signInWithEmailAndPassword(auth, email, password)
         .then((userCredentials) => {
           console.log("User successfully logged in:", userCredentials.user);
-          // You can navigate to another page or perform other actions on successful login
-          navigate("/dashboard"); // Example: Redirect to the dashboard page
+          navigate("/dashboard");
         })
         .catch((error) => {
           console.error("Login failed:", error.message);
-          // Handle the error, you can show a message to the user or perform other actions
         });
     } else {
       console.error("Invalid email or password");
-      // Handle invalid credentials, show a message to the user or perform other actions
     }
   };
 
