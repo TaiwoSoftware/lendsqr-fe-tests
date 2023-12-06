@@ -1,3 +1,7 @@
+@font-face {
+  font-family: "avenir_next";
+  src: url("../src/component/fonts/avenir-next/AvenirNextLTPro-Regular.otf");
+}
 html {
   max-width: 1440px;
   margin-left: auto;
@@ -6,7 +10,7 @@ html {
 }
 
 body {
-  background: #FFFFFF;
+  background: #ffffff;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -45,13 +49,24 @@ body {
 }
 
 .formPart h1 {
+  font-family: "avenir_next";
   margin-top: 6rem;
   color: #213f7d;
-  font-weight: 700;
+  font-size: 2.5rem;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+  letter-spacing: -0.1rem;
 }
 
 .formPart .enter {
-  color: rgba(18, 45, 100, 0.8745098039);
+  margin-top: -1rem;
+  color: #545f7d;
+  font-family: "avenir_next";
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 .formPart form {
@@ -62,39 +77,76 @@ body {
 }
 
 .formPart form input {
-  width: 100%;
+  width: 27.9375rem;
+  height: 3.125rem;
+  flex-shrink: 0;
   padding: 0.8rem 2rem;
-  border-radius: 0.2rem;
-  border: none;
-  border: 1px solid gray;
+  border-radius: 0.3125rem;
+  border: 2px solid rgba(84, 95, 125, 0.15);
+  background: #fff;
   display: block;
   margin-bottom: 2rem;
   box-sizing: border-box;
   outline: none;
 }
 
+.formPart form input::-moz-placeholder {
+  font-family: "avenir_next";
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: #545f7d;
+}
+
+.formPart form input::placeholder {
+  font-family: "avenir_next";
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: #545f7d;
+}
+
 .formPart form input[type=submit] {
   border: none;
-  color: white;
   border-radius: 0.5rem;
-  background: rgb(62, 195, 195);
+  background: #39cdcc;
+  color: var(--6, #fff);
+  text-align: center;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.0875rem;
+  text-transform: uppercase;
 }
 
 .forgot {
-  font-size: 0.5rem;
+  color: #39cdcc;
+  text-align: left;
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.075rem;
+  text-transform: uppercase;
   margin-bottom: 2rem;
   margin-top: -1rem;
-  font-weight: 600;
-  color: rgb(62, 195, 195);
 }
 
 .show {
   position: absolute;
-  top: 5.1rem;
+  top: 5.5rem;
   font-weight: 600;
+  color: #39cdcc;
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.075rem;
+  text-transform: uppercase;
   right: 1rem;
-  font-size: 0.5rem;
-  color: rgb(62, 195, 195);
   cursor: pointer;
 }
 

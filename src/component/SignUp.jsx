@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Logo from "./Images/Logo.svg";
 import pablo from "./Images/pablo-sign-in 1.svg";
+import { useNavigate } from "react-router-dom";
 const SignUp = () => {
   localStorage.clear();
   const email = document.querySelector("#email");
   const password = document.querySelector("#password");
   const [mainPassword, setMainPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -19,9 +21,14 @@ const SignUp = () => {
 
   const handleClick = (e) => {
     e.preventDefault();
-    setTimeout(() => {
-      setValues(!values);
-    }, 1000);
+    const isEmailEmpty = email.length === 0;
+    const isPasswordEmpty = password.length === 0;
+
+    isEmailEmpty || isPasswordEmpty
+      ? console.log("Email or password is empty.")
+      : navigate('/dashboard')
+
+
   };
 
   return (
