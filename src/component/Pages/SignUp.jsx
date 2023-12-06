@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import Logo from "./Images/Logo.svg";
-import pablo from "./Images/pablo-sign-in 1.svg";
+import Logo from "../Images/Logo.svg";
+import pablo from "../Images/pablo-sign-in 1.svg";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
 
