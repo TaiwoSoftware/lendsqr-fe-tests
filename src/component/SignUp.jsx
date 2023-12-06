@@ -23,12 +23,12 @@ const SignUp = () => {
   const handleClick = (e) => {
     e.preventDefault();
 
-    // signInWithEmailAndPassword(auth, email, password)
-    // .then((userCredentials) => {
-    //   console.log(userCredentials);
-    // }).catch((error) => {
-    //   console.log(error)
-    // })
+    signInWithEmailAndPassword(auth, email, password)
+    .then((userCredentials) => {
+      console.log(userCredentials);
+    }).catch((error) => {
+      console.log(error)
+    })
 
     // const isEmailEmpty = email.length === 0;
     // const isPasswordEmpty = password.length === 0;
