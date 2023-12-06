@@ -1,20 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import Logo from "./Images/Logo.svg";
 import pablo from "./Images/pablo-sign-in 1.svg";
 import { useNavigate } from "react-router-dom";
-import { auth} from './firebase'
+import { auth } from "./firebase";
+
 const SignUp = () => {
-  const email = document.querySelector("#email");
-  const password = document.querySelector("#password");
-  const [mainPassword, setMainPassword] = useState("");
+  const [email, setEmail] = useState(""); // Initialize email state
+  const [password, setPassword] = useState(""); // Initialize password state
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
-
-  const handleChange = (e) => {
-    e.preventDefault();
-    localStorage.setItem(e.target.id, e.target.value);
-  };
 
   const handleShow = () => {
     setShowPassword(!showPassword);
@@ -23,23 +18,26 @@ const SignUp = () => {
   const handleClick = (e) => {
     e.preventDefault();
 
-    signInWithEmailAndPassword(auth, email, password)
-    .then((userCredentials) => {
-      console.log(userCredentials);
-    }).catch((error) => {
-      console.log(error)
-    })
+    // Hardcoded allowed email and password
+    const allowedEmail = "test24@test.com";
+    const allowedPassword = "testpassword1234";
 
-    // const isEmailEmpty = email.length === 0;
-    // const isPasswordEmpty = password.length === 0;
-
-    // isEmailEmpty || isPasswordEmpty
-    //   ? console.log("Email or password is empty.")
-    //   : navigate('/dashboard')
-    //   signInWithEmailAndPassword( auth, email, password )
-    //   .then((userCredentials) => {
-    //     console.log(userCredentials);
-    //   })
+    // Check if entered credentials match the allowed ones
+    if (email === allowedEmail && password === allowedPassword) {
+      signInWithEmailAndPassword(auth, email, password)
+        .then((userCredentials) => {
+          console.log("User successfully logged in:", userCredentials.user);
+          // You can navigate to another page or perform other actions on successful login
+          navigate("/dashboard"); // Example: Redirect to the dashboard page
+        })
+        .catch((error) => {
+          console.error("Login failed:", error.message);
+          // Handle the error, you can show a message to the user or perform other actions
+        });
+    } else {
+      console.error("Invalid email or password");
+      // Handle invalid credentials, show a message to the user or perform other actions
+    }
   };
 
   return (
@@ -66,7 +64,7 @@ const SignUp = () => {
                 id="email"
                 placeholder="Email"
                 required
-                onChange={handleChange}
+                onChange={(e) => setEmail(e.target.value)}
               />
               <input
                 type={showPassword ? "text" : "password"}
@@ -74,9 +72,7 @@ const SignUp = () => {
                 id="password"
                 placeholder="Password"
                 required
-                onChange={(e) => {
-                  localStorage.setItem(e.target.id, e.target.value);
-                }}
+                onChange={(e) => setPassword(e.target.value)}
               />
               <p className="show" onClick={handleShow}>
                 {showPassword ? "Hide password" : "Show"}
